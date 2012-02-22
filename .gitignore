@@ -1,0 +1,13 @@
+.project
+.pydevproject
+.settings/
+*.*~
+*.pyc
+twitter.py
+boxnya.py
+settings.py
+egosearch.py
+favbot.py
+imkayac.py
+src/lib/twitter
+core.py
