@@ -2,6 +2,7 @@
 import email.parser
 import imaplib
 import sys
+import socket
 import time
 from email.header import decode_header
 
@@ -18,7 +19,11 @@ class Gmail(Input):
     
     def fetch(self):
         time.sleep(60)
-        _, n =  self.gmail.select()
+        try:
+            _, n =  self.gmail.select()
+        except socket.error:
+            self.init()
+            return 0
         delta = int(n[0]) - self.prev_count #前回より増えた件数
         self.prev_count = int(n[0]) #更新しておく
         
