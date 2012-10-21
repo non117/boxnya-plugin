@@ -41,6 +41,7 @@ class Api():
     def post_photo(self, source="", caption="", link="", image_obj=None, file_name=""):
         url = self.site + "post"
         if image_obj:
+            if isinstance(file_name, unicode): file_name = file_name.encode("utf-8")
             data = ("data", image_obj, file_name)
         else:
             data = ()
