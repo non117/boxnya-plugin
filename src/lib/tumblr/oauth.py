@@ -13,8 +13,9 @@ def make_raw_request(params, file_param=()):
     for name, value in params.items():
         body.append('--%s' % BOUNDARY)
         body.append('Content-Disposition: form-data; name="%s"' % name)
+        body.append('Content-Type: text/plain; charset=utf-8')
         body.append('')
-        body.append(value)
+        body.append(urllib.unquote(value))
     if file_param:
         name, value, filename = file_param
         body.append('--%s' % BOUNDARY)

@@ -38,14 +38,16 @@ class Api():
                                          "title":title,
                                          "body":body})
     
-    def post_photo(self, path, caption="", link="", source=""):
+    def post_photo(self, source="", caption="", link="", image_obj=None, file_name=""):
         url = self.site + "post"
-        with open(path) as f:
-            file_obj = f.read()
+        if image_obj:
+            data = ("data", image_obj, file_name)
+        else:
+            data = ()
         return self.execute(url, "POST", {"type":"photo",
                                           "caption":caption,
                                           "link":link,
                                           "source":source,
                                           },
-                            ("data", file_obj, path)
+                            data
                             )
