@@ -12,3 +12,4 @@ imkayac.py
 src/lib/twitter
 core.py
 log
+.DS_Store
